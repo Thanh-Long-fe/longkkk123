@@ -1,0 +1,7 @@
+/* override.css */
+h1, h2, p {
+    margin: revert;
+    font-size: revert;
+    line-height: revert;
+  }
+  

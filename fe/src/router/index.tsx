@@ -4,7 +4,8 @@ import ClientLayout from "../layout/clientLayout";
 import AdminLayout from "../layout/adminLayout";
 import Home from "../pages/Home";
 import DashBoard from "../pages/DashBoard";
-
+import About from "../pages/About/About";
+import Contact from "../pages/Contact/Contact";
 function Router() {
     return (
       <BrowserRouter>
@@ -13,6 +14,8 @@ function Router() {
             {/* Client layout */}
             <Route path="/" element={<ClientLayout />}>
               <Route index element={<Home />} />
+              <Route path="/gioi-thieu" element={<About />} />
+              <Route path="/lien-he" element={<Contact />} />
             </Route>
   
             {/* Admin layout */}
