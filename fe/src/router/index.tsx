@@ -10,6 +10,8 @@ import VeNoiDia from "../pages/VeNoiDia/VeNoiDia";
 import VeHaNoi from "../pages/VeNoiDia/VeHaNoi";
 import VeSaiGon from "../pages/VeNoiDia/VeSaiGon";
 import TinKhuyenMai from "../pages/TInKhuyenMai/TInKhuyenMai";
+import VeTheoHang from "../pages/VeTheoHang/VeTheoHang";
+import LoginForm from "../pages/Login/Login";
 
 function Router() {
   return (
@@ -23,6 +25,7 @@ function Router() {
             <Route path="/tin-khuyen-mai" element={<TinKhuyenMai />} />
             <Route path="/lien-he" element={<Contact />} />
             <Route path="/ve-noi-dia" element={<VeNoiDia />} />
+            <Route path="/ve-theo-hang" element={<VeTheoHang />} />
             <Route
               path="/ve-noi-dia/ve-may-bay-di-ha-noi"
               element={<VeHaNoi />}
@@ -36,6 +39,7 @@ function Router() {
           {/* Admin layout */}
           <Route path="/admin" element={<AdminLayout />}>
             <Route index element={<DashBoard />} />
+            <Route path="/admin/login" element={<LoginForm />} />
           </Route>
 
           {/* 404 */}
