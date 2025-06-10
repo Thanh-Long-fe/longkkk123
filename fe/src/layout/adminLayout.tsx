@@ -1,5 +1,5 @@
 // src/layouts/AdminLayout.tsx
-import { Outlet, Link } from 'react-router-dom'
+import { Outlet, Link } from "react-router-dom";
 
 export default function AdminLayout() {
   return (
@@ -15,5 +15,5 @@ export default function AdminLayout() {
         <Outlet />
       </main>
     </div>
-  )
+  );
 }
