@@ -13,7 +13,7 @@ export class RequestRepository {
   ) {}
 
   async create(data: CreateRequestDto): Promise<Request> {
-    return this.model.create(data);
+    return (await this.model.create(data)).populate('userId');
   }
 
   async findAll(): Promise<Request[]> {
@@ -22,6 +22,10 @@ export class RequestRepository {
 
   async findById(id: string): Promise<Request | null> {
     return this.model.findById(id).populate('userId').exec();
+  }
+
+  async updateRequest(id: string, data: Partial<CreateRequestDto>): Promise<Request | null> {
+    return this.model.findByIdAndUpdate(id, { ...data }, { new: true }).populate('userId');
   }
 
   async findByUserId(userId: string): Promise<Request | null> {

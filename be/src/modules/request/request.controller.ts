@@ -6,6 +6,7 @@ import {
   Param,
   Patch,
   Post,
+  Put,
   Req,
   UseGuards,
 } from '@nestjs/common';
@@ -37,7 +38,16 @@ export class RequestController {
   }
 
   @Roles(Role.ADMIN)
-  @Patch(':id/status')
+  @Put(':id')
+  async update(
+    @Param('id') id: string,
+    @Body() data: Partial<CreateRequestDto>,
+  ) {
+    return this.service.updateRequest(id, data);
+  }
+
+  @Roles(Role.ADMIN)
+  @Put(':id/status')
   updateStatus(@Param('id') id: string, @Body('status') status: string) {
     return this.service.updateStatus(id, status);
   }

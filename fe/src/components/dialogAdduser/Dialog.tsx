@@ -30,8 +30,6 @@ interface Props {
   open: boolean;
   onClose: () => void;
   onSubmit: (data: UserFormInputs) => void;
-  listUser?: UserFormInputs[];
-  id?: string
 }
 
 const UserDialog: React.FC<Props> = ({ open, onClose, onSubmit }) => {

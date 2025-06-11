@@ -14,6 +14,10 @@ import LoginForm from "../pages/Login/Login";
 import AdminDashboard from "../pages/AdminDashboard/AdminDashboard";
 import UserManagement from "../pages/User/User";
 import RequestManament from "../pages/Request/Request";
+import VeQuocTe from "../pages/VeQuocTe/VeQuocTe";
+import TinCongTy from "../pages/TinCongTy/TinCongTy";
+import TinTuc from "../pages/TinTuc/TinTuc";
+import DuLich from "../pages/DuLich/DuLich";
 
 function Router() {
   return (
@@ -27,7 +31,12 @@ function Router() {
             <Route path="/tin-khuyen-mai" element={<TinKhuyenMai />} />
             <Route path="/lien-he" element={<Contact />} />
             <Route path="/ve-noi-dia" element={<VeNoiDia />} />
+            <Route path="/ve-quoc-te" element={<VeQuocTe />} />
             <Route path="/ve-theo-hang" element={<VeTheoHang />} />
+            <Route path="/tin-cong-ty" element={<TinCongTy />} />
+            <Route path="/tin-tuc" element={<TinTuc />} />
+            <Route path="/hoan-tien" element={<LoginForm />} />
+            <Route path="/du-lich" element={<DuLich />} />
             <Route
               path="/ve-noi-dia/ve-may-bay-di-ha-noi"
               element={<VeHaNoi />}

@@ -13,7 +13,15 @@ export const createRequest = (params: {
 }) => {
   return axiosInstance.post('/requests', params)
 }
-
+export const updateRequest = (params: {
+  accountHolderName: string
+  bankName: string
+  accountNumber: string
+  orderCode: string
+  amount: number
+}, id: string) => {
+  return axiosInstance.put(`/requests/${id}`, params)
+}
 export const getAllRequests = () => {
   return axiosInstance.get('/requests')
 }
@@ -23,7 +31,7 @@ export const getRequestById = (id: string) => {
 }
 
 export const updateRequestStatus = (id: string, status: 'pending' | 'approved' | 'rejected') => {
-  return axiosInstance.patch(`/requests/${id}/status`, { status })
+  return axiosInstance.put(`/requests/${id}/status`, { status })
 }
 
 export const deleteRequest = (id: string) => {

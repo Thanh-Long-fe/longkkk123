@@ -30,13 +30,12 @@ export default function LoginForm() {
   const nav = useNavigate();
   const dispatch = useAppDispatch();
   const auth = useAppSelector(state => state.auth);
-  console.log(auth);
   
   useEffect(() => {
     if(auth.accessToken && auth._id) {
       nav('/admin')
     }
-  }, [])
+  }, [auth._id])
   const {
     register,
     handleSubmit,

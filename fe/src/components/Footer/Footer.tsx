@@ -36,24 +36,18 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Cột 3 - Trung tâm hỗ trợ */}
-        <div className="md:col-span-1 lg:col-span-1 bg-white text-black p-4 rounded shadow-md">
-          <h3 className="font-bold text-center mb-2">Trung tâm hỗ trợ</h3>
-          <div className="flex gap-3 items-center">
-            <div
-              className="p-3 bg-[#DF4B38] flex justify-center items-center h-[40px]"
-              style={{ borderRadius: "5px" }}
-            >
-              {" "}
-              <FaPhoneAlt className="cursor-pointer text-white" />
-            </div>
-            <div>
-              <div className="text-center font-bold text-red-600 text-lg">
-                Toàn quốc
-              </div>
-              <div className="text-center font-bold text-lg">02899963629</div>
-            </div>
-          </div>
+        <div className="md:col-span-1 lg:col-span-1 bg-white text-black p-6 rounded-lg shadow-md flex flex-col items-center">
+      <h3 className="font-bold text-xl mb-4 text-center">Trung tâm hỗ trợ</h3>
+      <div className="flex items-center gap-4 w-full justify-center">
+        <div className="p-3 bg-[#DF4B38] rounded-md flex justify-center items-center h-12 w-12">
+          <FaPhoneAlt className="text-white text-lg" />
         </div>
+        <div className="flex flex-col items-center">
+          <span className="font-bold text-red-600 text-lg">Toàn quốc</span>
+          <span className="font-bold text-lg">02899963629</span>
+        </div>
+      </div>
+    </div>
 
         {/* Cột 4 - Đăng ký email và social */}
         <div className="md:col-span-3 lg:col-span-1">

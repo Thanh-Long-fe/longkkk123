@@ -170,7 +170,10 @@ const UserManagement: React.FC = () => {
       try {
         if(confirm(`Có muốn ${status === 'active' ? 'inactive' : 'active'}`)) {
             const { data } = await lock(id, status);
-            
+            setAllUsers(pre => pre.map(v => v._id === data._id ? {
+                ...v,
+                status: data.status
+            } : v))
         }     
       } catch (error) {
         

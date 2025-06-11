@@ -1,16 +1,21 @@
 import { Link } from "react-router-dom";
 import Button from "../../components/button/Button";
-
+import ForumIcon from '@mui/icons-material/Forum';
+import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
+import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
+import FlightSearch from "../../components/Carditemfind";
+import AutoScrollGifSlide from "../../components/slide";
+import FullImageSlide from "../../components/slide";
 export default function Home() {
   return (
     <>
       <div className="flex gap-5">
         <div className="basis-1/2">
-          <img src="images/112.png" alt="" />
+          <FlightSearch/>
         </div>
         <div className="basis-1/2 flex flex-col">
           <div className="basis-1/2">
-            <img src="images/230.gif" alt="" className="w-full h-[220px]" />
+           <FullImageSlide/>
           </div>
           <div className="basis-1/2">
             {/* list */}
@@ -165,7 +170,7 @@ export default function Home() {
                       fontSize: 12,
                     }}
                   >
-                    Book vé quốc tế:Mr.T
+                    Book vé quốc tế: <ForumIcon sx={{color: "red"}}/> Mr.T
                   </span>
                 </p>
                 <p>
@@ -177,7 +182,7 @@ export default function Home() {
                       fontSize: 12,
                     }}
                   >
-                    Book vé nội địa: Ms.L
+                    Book vé nội địa: <ForumIcon sx={{color: "red"}}/> Ms.L
                   </span>
                 </p>
                 <div
@@ -199,7 +204,7 @@ export default function Home() {
                       fontSize: 12,
                     }}
                   >
-                    Book vé quốc tế: Mr.T
+                    Book vé quốc tế: <ForumIcon sx={{color: "red"}}/>  Mr.T
                   </span>
                 </p>
                 <p>
@@ -211,7 +216,7 @@ export default function Home() {
                       fontSize: 12,
                     }}
                   >
-                    Book vé nội địa: Mr.T
+                    Book vé nội địa: <ForumIcon sx={{color: "red"}}/> Mr.T
                   </span>
                 </p>
               </>
@@ -224,10 +229,10 @@ export default function Home() {
               .Gọi điện thoại cho BAYRE247{" "}
             </span>
             <div style={{ fontSize: "0.75rem", color: "#373a3c" }}>
-              Phone: <span className="text-blue-600">02899963629</span>
+              Phone: <span className="text-blue-600"> <LocalPhoneIcon sx={{color: "red"}}/> 02899963629</span>
             </div>
             <div style={{ fontSize: "0.75rem", color: "#373a3c" }}>
-              Mobile: <span className="text-blue-600">02899963629</span>
+              Mobile: <span className="text-blue-600"> <PhoneAndroidIcon sx={{color: "red"}}/> 02899963629</span>
             </div>
           </div>
           <div>

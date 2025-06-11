@@ -1,6 +1,7 @@
 import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { CreateRequestDto } from './dto/create-request.dto';
 import { RequestRepository } from './repositories/request.repository';
+import { Request as RequestEntity } from './entities/request.schema';
 
 @Injectable()
 export class RequestService {
@@ -18,8 +19,12 @@ export class RequestService {
     return this.repo.findAll();
   }
 
+  async updateRequest(id: string, data: Partial<CreateRequestDto>): Promise<RequestEntity | null> {
+    return this.repo.updateRequest(id, data);
+  }
+
   async getRequestById(id: string) {
-    const req = await this.repo.findById(id);
+    const req = await this.repo.findByUserId(id);
     if (!req) throw new NotFoundException('Request not found');
     return req;
   }

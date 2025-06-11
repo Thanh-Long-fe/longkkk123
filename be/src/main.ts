@@ -6,10 +6,9 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.useGlobalInterceptors(new LoggingInterceptor());
   app.enableCors({
-    origin: true,            // Hoặc: '*'
-    credentials: true,       // Cho phép gửi cookie, authorization header
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    allowedHeaders: '*',
+    origin: '*', // Cho phép tất cả domain
+    methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+    allowedHeaders: '*', // Cho phép tất cả header
   });
   await app.listen(3000);
 }

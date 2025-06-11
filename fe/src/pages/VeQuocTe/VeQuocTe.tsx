@@ -1,7 +1,7 @@
 import TableVe from "../../components/table/TableVe";
 import Tin from "../../components/tin/TIn";
 import "../../override.css";
-const VeTheoHangAirlines = () => {
+const VeQuocTe = () => {
     return (
         <div>
             <div className="flex gap-5">
@@ -265,4 +265,4 @@ const VeTheoHangAirlines = () => {
     );
 };
 
-export default VeTheoHangAirlines;
+export default VeQuocTe;
