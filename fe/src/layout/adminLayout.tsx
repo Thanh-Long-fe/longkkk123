@@ -1,19 +1,16 @@
 // src/layouts/AdminLayout.tsx
 import { Outlet, Link } from "react-router-dom";
+import Sidebar from "../components/Sidebar";
+import Header from "../components/Header";
 
 export default function AdminLayout() {
   return (
     <div className="flex">
-      <aside className="w-64 bg-gray-200 p-4 h-screen">
-        <nav className="flex flex-col gap-2">
-          <Link to="/admin">Dashboard</Link>
-          <Link to="/admin/users">Người dùng</Link>
-        </nav>
-      </aside>
-
-      <main className="flex-1 p-4">
-        <Outlet />
-      </main>
+    <Sidebar />
+    <div className="flex flex-col flex-1 min-h-screen bg-gray-100">
+      <Header />
+      <main className="p-6"><Outlet/></main>
     </div>
+  </div>
   );
 }

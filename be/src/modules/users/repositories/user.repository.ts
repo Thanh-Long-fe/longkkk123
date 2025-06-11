@@ -16,4 +16,17 @@ export class UserRepository {
     async createUser (data : Partial<User>): Promise<any> {
         return this.UserModel.create(data);
     }
+    async updateUser (id :string, data : Partial<User>): Promise<any> {
+        return this.UserModel.findByIdAndUpdate(id,{ ...data });
+    }
+
+    async actionUser (id :string, status: 'active' | 'inactive'): Promise<any> {
+        return this.UserModel.findByIdAndUpdate(id, { status: status });
+    }
+
+    
+    async getListUser (): Promise<any[]> {
+        return this.UserModel.find();
+    } 
+   
 }

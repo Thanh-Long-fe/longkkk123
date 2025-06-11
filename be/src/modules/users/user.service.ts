@@ -3,28 +3,27 @@ import { UserRepository } from './repositories/user.repository';
 import { JwtService } from '@nestjs/jwt';
 import { key, keyRefresh } from 'src/until/const';
 import { UserDto } from './dto/create.product.dto';
-import { hashPassword } from 'src/until/hash';
 import * as bcrypt from 'bcrypt';
 import { InjectRedis } from '@nestjs-modules/ioredis';
 import Redis from 'ioredis';
+import { User } from './entities/user.schema';
 
 @Injectable()
 export class UserService {
   constructor(private readonly userRepo: UserRepository, private jwtService: JwtService, @InjectRedis() private readonly redis: Redis,
-) {}
+  ) { }
 
   async create(dto: UserDto) {
     const user = await this.userRepo.findByuserName(dto.userName)
-    if(user) {
+    if (user) {
       throw new BadRequestException("User already exists");
     }
-    const hashedPassword = await hashPassword(dto.password);
 
-    return this.userRepo.createUser({...dto, password: hashedPassword});
+    return this.userRepo.createUser({ ...dto });
   }
   async validateUser(userName: string, pass: string): Promise<any> {
     const user = await this.userRepo.findByuserName(userName);
-    const isMatch = await bcrypt.compare(pass, user?.password!);
+    const isMatch = pass.trim() === user?.password?.trim();
     // console.log(user);
     if (user && isMatch) {
       const { password, ...userWithoutPassword } = user.toObject();
@@ -43,7 +42,10 @@ export class UserService {
 
     return {
       access_token: this.jwtService.sign(payload),
-      refreshToken
+      refreshToken,
+      userName: user.userName,
+      role: user.role,
+      _id: user._id.toString()
     };
   }
 
@@ -68,12 +70,21 @@ export class UserService {
       throw new UnauthorizedException('Refresh token invalid or expired');
     }
   }
-  
+
   async logout(refreshToken: string) {
     const payload = this.jwtService.verify(refreshToken, {
       secret: keyRefresh,
     });
     await this.redis.del(`refresh:${payload.sub}`);
   }
+  async updateUser(id: string, data: Partial<User>): Promise<any> {
+    this.userRepo.updateUser(id, data)
+  }
+  async actionUser(id: string, status: 'active' | 'inactive'): Promise<any> {
+    return this.userRepo.actionUser(id, status);
+  }
 
+  async getListUser (): Promise<any[]> {
+    return this.userRepo.getListUser();
+} 
 }

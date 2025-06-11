@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ClientLayout from "../layout/clientLayout";
 import AdminLayout from "../layout/adminLayout";
 import Home from "../pages/Home";
-import DashBoard from "../pages/DashBoard";
 import About from "../pages/About/About";
 import Contact from "../pages/Contact/Contact";
 import VeNoiDia from "../pages/VeNoiDia/VeNoiDia";
@@ -12,6 +11,9 @@ import VeSaiGon from "../pages/VeNoiDia/VeSaiGon";
 import TinKhuyenMai from "../pages/TInKhuyenMai/TInKhuyenMai";
 import VeTheoHang from "../pages/VeTheoHang/VeTheoHang";
 import LoginForm from "../pages/Login/Login";
+import AdminDashboard from "../pages/AdminDashboard/AdminDashboard";
+import UserManagement from "../pages/User/User";
+import RequestManament from "../pages/Request/Request";
 
 function Router() {
   return (
@@ -38,9 +40,13 @@ function Router() {
 
           {/* Admin layout */}
           <Route path="/admin" element={<AdminLayout />}>
-            <Route index element={<DashBoard />} />
-            <Route path="/admin/login" element={<LoginForm />} />
+            <Route path="/admin" element={<AdminDashboard />} />
+            <Route path="/admin/dashboard" element={<AdminDashboard />} />
+            <Route path="/admin/users" element={<UserManagement />} />
+            <Route path="/admin/requests" element={<RequestManament />} />
+
           </Route>
+          <Route path="/admin/login" element={<LoginForm />} />
 
           {/* 404 */}
           {/* <Route path="*" element={<NotFound />} /> */}

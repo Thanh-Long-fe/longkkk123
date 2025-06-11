@@ -22,7 +22,6 @@ export class RequestController {
   @Roles(Role.USER, Role.ADMIN)
   @Post()
   create(@Body() dto: CreateRequestDto, @Req() req: any) {
-    console.log(req)
     return this.service.createRequest(dto, req.user.userId);
   }
 
