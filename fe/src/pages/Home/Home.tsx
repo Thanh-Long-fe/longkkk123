@@ -235,14 +235,14 @@ export default function Home() {
               Phone:{" "}
               <span className="text-blue-600">
                 {" "}
-                <LocalPhoneIcon sx={{ color: "red" }} /> 02899963629
+                <LocalPhoneIcon sx={{ color: "red" }} /> 1900.27.27.67
               </span>
             </div>
             <div style={{ fontSize: "0.75rem", color: "#373a3c" }}>
               Mobile:{" "}
               <span className="text-blue-600">
                 {" "}
-                <PhoneAndroidIcon sx={{ color: "red" }} /> 02899963629
+                <PhoneAndroidIcon sx={{ color: "red" }} /> 1900.27.27.67
               </span>
             </div>
           </div>

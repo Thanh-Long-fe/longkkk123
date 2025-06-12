@@ -92,7 +92,7 @@ const Header: React.FC = () => {
             alt="phone icon"
             className="w-5 h-5 sm:w-7 sm:h-7 mr-1 sm:mr-2"
           />
-          <span className="hidden sm:inline">02899963629</span>
+          <span className="hidden sm:inline">1900.27.27.67</span>
           <span className="sm:hidden">0289996...</span>
         </div>
 

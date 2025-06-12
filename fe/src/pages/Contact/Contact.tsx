@@ -47,9 +47,9 @@ const Contact = () => {
             phongvemaybay360.com/@gmail.com
           </a>
           <br />
-          Hotline:&nbsp;<strong>02899963629</strong>
+          Hotline:&nbsp;<strong>1900.27.27.67</strong>
           <br />
-          Tel:&nbsp;<strong>02899963629</strong>
+          Tel:&nbsp;<strong>1900.27.27.67</strong>
         </p>
         <p>
           <iframe
@@ -70,9 +70,9 @@ const Contact = () => {
             phongvemaybay360.com/@gmail.com
           </a>
           <br />
-          Hotline:&nbsp;<strong>02899963629</strong>
+          Hotline:&nbsp;<strong>1900.27.27.67</strong>
           <br />
-          Tel:&nbsp;<strong>02899963629</strong>
+          Tel:&nbsp;<strong>1900.27.27.67</strong>
         </p>
         <p>
           <iframe
@@ -94,9 +94,9 @@ const Contact = () => {
             phongvemaybay360.com/@gmail.com
           </a>
           <br />
-          Hotline:&nbsp;<strong>02899963629</strong>
+          Hotline:&nbsp;<strong>1900.27.27.67</strong>
           <br />
-          Tel:&nbsp;<strong>02899963629</strong>
+          Tel:&nbsp;<strong>1900.27.27.67</strong>
         </p>
         <p>
           <iframe

@@ -36,7 +36,7 @@ export default function ClientLayout() {
           <p>
             {" "}
             Bạn có thể kiểm tra giá vé và đặt vé nhanh thông qua HOTLINE
-            02899963629{" "}
+            1900.27.27.67{" "}
           </p>
           <img
             src="https://phongvemaybay360.com/wp-content/themes/abay/images/gif-1.gif"

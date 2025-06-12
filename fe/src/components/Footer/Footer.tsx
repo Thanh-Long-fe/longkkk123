@@ -46,7 +46,7 @@ const Footer: React.FC = () => {
             </div>
             <div className="flex flex-col items-center">
               <span className="font-bold text-red-600 text-lg">Toàn quốc</span>
-              <span className="font-bold text-lg">02899963629</span>
+              <span className="font-bold text-lg">1900.27.27.67</span>
             </div>
           </div>
         </div>
@@ -138,7 +138,7 @@ const Footer: React.FC = () => {
             </a>
           </p>
           <p>Email: phongvemaybay360.com@gmail.com</p>
-          <p>Tel: 02899963629</p>
+          <p>Tel: 1900.27.27.67</p>
         </div>
 
         {/* Miền Nam */}
@@ -166,7 +166,7 @@ const Footer: React.FC = () => {
             </a>
           </p>
           <p>Email: phongvemaybay360.com@gmail.com</p>
-          <p>Tel: 02899963629</p>
+          <p>Tel: 1900.27.27.67</p>
           <hr className="my-2 border-gray-500" />
           <p className="font-semibold">D/ Bình Dương</p>
           <p>Ngã 3 cây lơn, thị xã Dĩ An, tỉnh Bình Dương</p>
