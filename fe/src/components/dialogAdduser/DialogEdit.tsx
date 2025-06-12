@@ -87,7 +87,7 @@ const UserDialogEdit: React.FC<Props> = ({ open, onClose, onSubmit, user }) => {
     formData.append("file", file);
 
     const res = await axiosInstance.post(
-      "http://localhost:3000/upload",
+      `${import.meta.env.VITE_API_URL}/upload`,
       formData,
       {
         headers: { "Content-Type": "multipart/form-data" },
