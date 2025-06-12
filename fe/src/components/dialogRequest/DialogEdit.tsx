@@ -132,7 +132,7 @@ const RequestDialogEdit: React.FC<Props> = ({
 
   return (
     <Dialog open={open} onClose={onClose} fullWidth maxWidth="sm">
-      <DialogTitle>Tạo yêu cầu</DialogTitle>
+      <DialogTitle>Sửa yêu cầu</DialogTitle>
       <DialogContent>
         <form onSubmit={handleSubmit(handleFormSubmit)} id="request-form">
           <TextField
@@ -195,7 +195,7 @@ const RequestDialogEdit: React.FC<Props> = ({
       <DialogActions>
         <Button onClick={onClose}>Hủy</Button>
         <Button type="submit" form="request-form" variant="contained">
-          Tạo
+          Sửa
         </Button>
       </DialogActions>
     </Dialog>

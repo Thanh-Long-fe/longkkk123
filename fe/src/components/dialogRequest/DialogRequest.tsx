@@ -113,7 +113,7 @@ const RequestDialog: React.FC<Props> = ({ open, onClose, onSubmit }) => {
 
   return (
     <Dialog open={open} onClose={onClose} fullWidth maxWidth="sm">
-      <DialogTitle>Sửa yêu cầu</DialogTitle>
+      <DialogTitle>Tạo yêu cầu</DialogTitle>
       <DialogContent>
         <form onSubmit={handleSubmit(handleFormSubmit)} id="request-form">
           <TextField
@@ -173,7 +173,7 @@ const RequestDialog: React.FC<Props> = ({ open, onClose, onSubmit }) => {
       <DialogActions>
         <Button onClick={onClose}>Hủy</Button>
         <Button type="submit" form="request-form" variant="contained">
-          Sửa
+          Tạo
         </Button>
       </DialogActions>
     </Dialog>
