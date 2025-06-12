@@ -7,6 +7,9 @@ import {
   Button,
   TextField,
   MenuItem,
+  FormControl,
+  InputLabel,
+  Select,
 } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -140,25 +143,28 @@ const RequestDialogEdit: React.FC<Props> = ({
             error={!!errors.accountHolderName}
             helperText={errors.accountHolderName?.message}
           />
-          <TextField
-            label="Tên ngân hàng"
-            select
+          <FormControl
             fullWidth
             margin="normal"
-            {...register("bankName")}
             error={!!errors.bankName}
-            helperText={errors.bankName?.message}
           >
-            {vietnamBanks.length > 0 ? (
-              vietnamBanks.map((bank) => (
+            <InputLabel id="bankName-label">Tên ngân hàng</InputLabel>
+            <Select
+              labelId="bankName-label"
+              label="Tên ngân hàng"
+              defaultValue={request.bankName}
+              {...register("bankName")}
+            >
+              {vietnamBanks.map((bank) => (
                 <MenuItem key={bank} value={bank}>
                   {bank}
                 </MenuItem>
-              ))
-            ) : (
-              <MenuItem disabled>Không có ngân hàng</MenuItem>
-            )}
-          </TextField>
+              ))}
+            </Select>
+            <p style={{ color: "#d32f2f", fontSize: "0.75rem", marginTop: "4px" }}>
+              {errors.bankName?.message}
+            </p>
+          </FormControl>
           <TextField
             label="Số tài khoản"
             fullWidth

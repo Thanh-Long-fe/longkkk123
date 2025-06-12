@@ -495,8 +495,8 @@ const RequestManagement: React.FC = () => {
                           justifyContent: "center",
                         }}
                       >
-                        {auth.role === "user" &&
-                          request.status === "pending" && (
+                        {
+                          (request.status === "pending" || auth.role === "admin") && (
                             <Tooltip title="Chỉnh sửa">
                               <IconButton
                                 size="small"

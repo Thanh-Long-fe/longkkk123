@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "../reduxx/hook";
 import { clearUser } from "../reduxx/authSlice";
 
@@ -13,8 +13,8 @@ const Header = () => {
   return (
     <header className="w-full h-16 bg-white shadow px-6 flex items-center justify-between">
       <h1 className="text-xl font-semibold">Admin Panel</h1>
-      <div>
-        Xin chào, {auth.userName}{" "}
+      <div className="flex items-center">
+       <Typography sx={{ fontWeight: "bold", padding: "0px 10px"}}> Xin chào, {auth.userName}{" "}</Typography>
         <Button onClick={signOut} variant="contained">
           Đăng xuất
         </Button>

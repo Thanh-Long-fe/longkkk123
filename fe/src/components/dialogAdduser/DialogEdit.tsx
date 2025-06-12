@@ -105,7 +105,7 @@ const UserDialogEdit: React.FC<Props> = ({ open, onClose, onSubmit, user }) => {
 
   return (
     <Dialog open={open} onClose={onClose} fullWidth maxWidth="sm">
-      <DialogTitle>Tạo người dùng</DialogTitle>
+      <DialogTitle>Sửa người dùng</DialogTitle>
       <DialogContent>
         <form onSubmit={handleSubmit(handleFormSubmit)} id="user-form">
           <TextField
@@ -170,7 +170,7 @@ const UserDialogEdit: React.FC<Props> = ({ open, onClose, onSubmit, user }) => {
       <DialogActions>
         <Button onClick={onClose}>Hủy</Button>
         <Button type="submit" form="user-form" variant="contained">
-          Tạo
+        Sửa
         </Button>
       </DialogActions>
     </Dialog>
