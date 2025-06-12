@@ -1,6 +1,5 @@
-import React from 'react';
-import { MenuItem, Select, FormControl, InputLabel } from '@mui/material';
-import type { SelectChangeEvent } from '@mui/material';
+import { MenuItem, Select, FormControl, InputLabel } from "@mui/material";
+import type { SelectChangeEvent } from "@mui/material";
 
 interface StatusSelectProps {
   value: string;
@@ -8,9 +7,9 @@ interface StatusSelectProps {
 }
 
 const statusColors: Record<string, string> = {
-  pending: '#fbc02d',    // vàng
-  approved: '#2e7d32',   // xanh lá
-  rejected: '#d32f2f',   // đỏ
+  pending: "#fbc02d", // vàng
+  approved: "#2e7d32", // xanh lá
+  rejected: "#d32f2f", // đỏ
 };
 
 export default function StatusSelect({ value, onChange }: StatusSelectProps) {

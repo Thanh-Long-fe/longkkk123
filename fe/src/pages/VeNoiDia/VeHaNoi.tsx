@@ -1,9 +1,21 @@
+import { Link } from "react-router-dom";
 import TableVe from "../../components/table/TableVe";
 import Tin from "../../components/tin/TIn";
 import "../../override.css";
 const VeHaNoi = () => {
   return (
     <div>
+      <div className="breadcrumb breadcrumbs">
+        <div className="rdfa-breadcrumb">
+          <div>
+            <Link to="/">Trang chủ</Link>
+            &nbsp;<span className="separator">»</span>&nbsp;{" "}
+            <Link to="/ve-noi-dia">Vé nội địa</Link>
+            &nbsp;
+            <span className="separator">»</span>&nbsp;Vé Hà Nội
+          </div>
+        </div>
+      </div>
       <div className="flex gap-5">
         <div className="basis-1/2">
           <>

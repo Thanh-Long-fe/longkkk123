@@ -1,21 +1,20 @@
 import { Link } from "react-router-dom";
 import Button from "../../components/button/Button";
-import ForumIcon from '@mui/icons-material/Forum';
-import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
-import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
+import ForumIcon from "@mui/icons-material/Forum";
+import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
+import PhoneAndroidIcon from "@mui/icons-material/PhoneAndroid";
 import FlightSearch from "../../components/Carditemfind";
-import AutoScrollGifSlide from "../../components/slide";
 import FullImageSlide from "../../components/slide";
 export default function Home() {
   return (
     <>
       <div className="flex gap-5">
         <div className="basis-1/2">
-          <FlightSearch/>
+          <FlightSearch />
         </div>
         <div className="basis-1/2 flex flex-col">
           <div className="basis-1/2">
-           <FullImageSlide/>
+            <FullImageSlide />
           </div>
           <div className="basis-1/2">
             {/* list */}
@@ -62,14 +61,14 @@ export default function Home() {
                 <span style={{ fontSize: "0.75rem" }}>
                   Khách đặt 1 vé máy bay{" "}
                   <span className="font-bold">
-                    Hà Nội - De Gaulle, Paris, ngày 24/07/2025
+                    Hà Nội - Berlin, ngày 16/06/2025
                   </span>
                 </span>
               </div>
             </div>
             <div className="flex gap-4">
               <img
-                src="images/14-mt4bi81sgrwnu0iaqlzrqixbwpyvba64d5f8hcq818.png"
+                src="images/30-mt4bi66433u36sl11l6iljeepy84vvynow49ist0do.png"
                 alt=""
               />
               <div>
@@ -94,14 +93,14 @@ export default function Home() {
                 <span style={{ fontSize: "0.75rem" }}>
                   Khách đặt 1 vé máy bay{" "}
                   <span className="font-bold">
-                    Hà Nội - De Gaulle, Paris, ngày 24/07/2025
+                    Hà Nội - London,CHAU AU, ngày 22/07/2025
                   </span>
                 </span>
               </div>
             </div>
             <div className="flex gap-4">
               <img
-                src="images/14-mt4bi81sgrwnu0iaqlzrqixbwpyvba64d5f8hcq818.png"
+                src="images/45-mt4bi81sgrwnu0iaqlzrqixbwpyvba64d5f8hcq818.png"
                 alt=""
               />
               <div>
@@ -109,7 +108,6 @@ export default function Home() {
                   className="flex gap-2 items-center"
                   style={{ fontSize: "0.75rem" }}
                 >
-                  {" "}
                   <img
                     src="https://phongvemaybay360.com/wp-content/themes/abay/images/refresh.gif"
                     alt=""
@@ -127,9 +125,14 @@ export default function Home() {
       </div>
       <div
         style={{ border: "solid 1px #c8c8c8", borderRadius: "10px" }}
-        className="flex my-4 p-2 gap-8"
+        className="flex my-4 p-6 gap-16 flex-wrap lg:flex-nowrap"
       >
-        <div className="basis-1/2">
+        <div
+          className="basis-full md:basis-1/2 px-2"
+          style={{
+            borderRight: "solid 1px #c8c8c8",
+          }}
+        >
           <h4
             style={{ fontSize: "1.5rem", color: "#130A7F" }}
             className="font-bold"
@@ -170,7 +173,7 @@ export default function Home() {
                       fontSize: 12,
                     }}
                   >
-                    Book vé quốc tế: <ForumIcon sx={{color: "red"}}/> Mr.T
+                    Book vé quốc tế: <ForumIcon sx={{ color: "red" }} /> Mr.T
                   </span>
                 </p>
                 <p>
@@ -182,7 +185,7 @@ export default function Home() {
                       fontSize: 12,
                     }}
                   >
-                    Book vé nội địa: <ForumIcon sx={{color: "red"}}/> Ms.L
+                    Book vé nội địa: <ForumIcon sx={{ color: "red" }} /> Ms.L
                   </span>
                 </p>
                 <div
@@ -204,7 +207,7 @@ export default function Home() {
                       fontSize: 12,
                     }}
                   >
-                    Book vé quốc tế: <ForumIcon sx={{color: "red"}}/>  Mr.T
+                    Book vé quốc tế: <ForumIcon sx={{ color: "red" }} /> Mr.T
                   </span>
                 </p>
                 <p>
@@ -216,7 +219,7 @@ export default function Home() {
                       fontSize: 12,
                     }}
                   >
-                    Book vé nội địa: <ForumIcon sx={{color: "red"}}/> Mr.T
+                    Book vé nội địa: <ForumIcon sx={{ color: "red" }} /> Mr.T
                   </span>
                 </p>
               </>
@@ -229,10 +232,18 @@ export default function Home() {
               .Gọi điện thoại cho BAYRE247{" "}
             </span>
             <div style={{ fontSize: "0.75rem", color: "#373a3c" }}>
-              Phone: <span className="text-blue-600"> <LocalPhoneIcon sx={{color: "red"}}/> 02899963629</span>
+              Phone:{" "}
+              <span className="text-blue-600">
+                {" "}
+                <LocalPhoneIcon sx={{ color: "red" }} /> 02899963629
+              </span>
             </div>
             <div style={{ fontSize: "0.75rem", color: "#373a3c" }}>
-              Mobile: <span className="text-blue-600"> <PhoneAndroidIcon sx={{color: "red"}}/> 02899963629</span>
+              Mobile:{" "}
+              <span className="text-blue-600">
+                {" "}
+                <PhoneAndroidIcon sx={{ color: "red" }} /> 02899963629
+              </span>
             </div>
           </div>
           <div>
@@ -256,7 +267,7 @@ export default function Home() {
             ></iframe>
           </div>
         </div>
-        <div className="basis-1/2">
+        <div className="basis-full md:basis-1/2">
           <h4
             style={{ fontSize: "1.5rem", color: "#130A7F" }}
             className="font-bold"
@@ -301,7 +312,7 @@ export default function Home() {
             <div>
               {" "}
               <img
-                src="images/logoTHD.png"
+                src="images/HouseIcon.png"
                 alt=""
                 style={{
                   width: "55px",
@@ -314,14 +325,14 @@ export default function Home() {
                 style={{ fontSize: "0.75rem" }}
                 className="uppercase font-bold"
               >
-                Thanh toán bằng tiền mặt tại Văn phòng Vebayre247
+                Thanh toán tại nhà
               </div>
               <div
                 style={{ fontSize: "0.75rem", color: "#373a3c" }}
                 className=""
               >
-                Sau khi đặt hàng thành công, Quý khách vui lòng qua văn phòng
-                Vebayre247 để thanh toán và nhận vé.
+                Nhân viên Phòng Vé 360 sẽ giao vé & thu tiền tại nhà theo địa
+                chỉ Quý khách cung cấp.
               </div>
             </div>
           </div>
@@ -332,7 +343,7 @@ export default function Home() {
             <div>
               {" "}
               <img
-                src="images/logoTHD.png"
+                src="images/bank.jpg"
                 alt=""
                 style={{
                   width: "55px",
@@ -345,14 +356,15 @@ export default function Home() {
                 style={{ fontSize: "0.75rem" }}
                 className="uppercase font-bold"
               >
-                Thanh toán bằng tiền mặt tại Văn phòng Vebayre247
+                Thanh toán qua chuyển khoản
               </div>
               <div
                 style={{ fontSize: "0.75rem", color: "#373a3c" }}
                 className=""
               >
-                Sau khi đặt hàng thành công, Quý khách vui lòng qua văn phòng
-                Vebayre247 để thanh toán và nhận vé.
+                Quý khách có thể thanh toán cho chúng tôi bằng cách chuyển khoản
+                trực tiếp tại ngân hàng, chuyển qua thẻ ATM, hoặc qua Internet
+                banking.
               </div>
             </div>
           </div>

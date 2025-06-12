@@ -1,5 +1,13 @@
 import React from "react";
-import { TextField, Button, MenuItem, Select, FormControl, Box, Typography } from "@mui/material";
+import {
+  TextField,
+  Button,
+  MenuItem,
+  Select,
+  FormControl,
+  Box,
+  Typography,
+} from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
@@ -7,7 +15,9 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 const FlightSearch = () => {
   const [departureCity, setDepartureCity] = React.useState("Tp Hồ Chí Minh");
   const [destinationCity, setDestinationCity] = React.useState("Hà Nội");
-  const [departureDate, setDepartureDate] = React.useState(new Date("2025-05-16"));
+  const [departureDate, setDepartureDate] = React.useState(
+    new Date("2025-05-16"),
+  );
   const [returnDate, setReturnDate] = React.useState(null);
   const [adults, setAdults] = React.useState(1);
   const [children, setChildren] = React.useState(0);
@@ -191,7 +201,7 @@ const FlightSearch = () => {
               ))}
             </Select>
           </FormControl>
-          
+
           <FormControl sx={inputStyles}>
             <Select
               value={children}
@@ -212,7 +222,7 @@ const FlightSearch = () => {
               ))}
             </Select>
           </FormControl>
-          
+
           <FormControl sx={inputStyles}>
             <Select
               value={infants}

@@ -1,31 +1,47 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 import {
-  Dialog, DialogTitle, DialogContent, DialogActions,
-  Button, TextField, MenuItem
-} from '@mui/material';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
-import axiosInstance from '../../service/client';
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Button,
+  TextField,
+  MenuItem,
+} from "@mui/material";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import axiosInstance from "../../service/client";
 
 export interface UserFormInputs {
   userName: string;
   name: string;
   password: string;
-  role: 'user' | 'admin';
-  status: 'active' | 'inactive';
+  role: "user" | "admin";
+  status: "active" | "inactive";
   image: string;
-  _id?: string
+  _id?: string;
 }
 
-const schema = yup.object({
-  userName: yup.string().required('Tên đăng nhập là bắt buộc'),
-  name: yup.string().required('Tên là bắt buộc'),
-  password: yup.string().min(6, 'Mật khẩu ít nhất 6 ký tự').required('Mật khẩu là bắt buộc'),
-  role: yup.string().oneOf(['user', 'admin'] as const).required('Vai trò là bắt buộc'),
-  status: yup.string().oneOf(['active', 'inactive'] as const).required('Trạng thái là bắt buộc'),
-  image: yup.string().url('Phải là một URL hợp lệ').default('')
-}).required();
+const schema = yup
+  .object({
+    userName: yup.string().required("Tên đăng nhập là bắt buộc"),
+    name: yup.string().required("Tên là bắt buộc"),
+    password: yup
+      .string()
+      .min(6, "Mật khẩu ít nhất 6 ký tự")
+      .required("Mật khẩu là bắt buộc"),
+    role: yup
+      .string()
+      .oneOf(["user", "admin"] as const)
+      .required("Vai trò là bắt buộc"),
+    status: yup
+      .string()
+      .oneOf(["active", "inactive"] as const)
+      .required("Trạng thái là bắt buộc"),
+    image: yup.string().url("Phải là một URL hợp lệ").default(""),
+  })
+  .required();
 
 interface Props {
   open: boolean;
@@ -35,7 +51,13 @@ interface Props {
 }
 
 const UserDialogEdit: React.FC<Props> = ({ open, onClose, onSubmit, user }) => {
-  const { register, handleSubmit, formState: { errors }, reset, setValue} = useForm<UserFormInputs>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+    setValue,
+  } = useForm<UserFormInputs>({
     resolver: yupResolver(schema),
     defaultValues: {
       userName: user.userName,
@@ -43,8 +65,8 @@ const UserDialogEdit: React.FC<Props> = ({ open, onClose, onSubmit, user }) => {
       password: user.password,
       role: user.role,
       status: user.status,
-      image: user.image
-    }
+      image: user.image,
+    },
   });
 
   useEffect(() => {
@@ -54,21 +76,25 @@ const UserDialogEdit: React.FC<Props> = ({ open, onClose, onSubmit, user }) => {
       password: user.password,
       role: user.role,
       status: user.status,
-      image: user.image
-    })
-  }, [user])
+      image: user.image,
+    });
+  }, [user]);
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
-  
+
     const formData = new FormData();
-    formData.append('file', file);
-  
-    const res = await axiosInstance.post('http://localhost:3000/upload', formData, {
-      headers: { 'Content-Type': 'multipart/form-data' }
-    });
-  
-    setValue('image', res.data.url); // lưu vào form
+    formData.append("file", file);
+
+    const res = await axiosInstance.post(
+      "http://localhost:3000/upload",
+      formData,
+      {
+        headers: { "Content-Type": "multipart/form-data" },
+      },
+    );
+
+    setValue("image", res.data.url); // lưu vào form
   };
 
   const handleFormSubmit = (data: UserFormInputs) => {
@@ -86,7 +112,7 @@ const UserDialogEdit: React.FC<Props> = ({ open, onClose, onSubmit, user }) => {
             label="Username"
             fullWidth
             margin="normal"
-            {...register('userName')}
+            {...register("userName")}
             error={!!errors.userName}
             helperText={errors.userName?.message}
           />
@@ -94,7 +120,7 @@ const UserDialogEdit: React.FC<Props> = ({ open, onClose, onSubmit, user }) => {
             label="Tên"
             fullWidth
             margin="normal"
-            {...register('name')}
+            {...register("name")}
             error={!!errors.name}
             helperText={errors.name?.message}
           />
@@ -103,14 +129,14 @@ const UserDialogEdit: React.FC<Props> = ({ open, onClose, onSubmit, user }) => {
             type="password"
             fullWidth
             margin="normal"
-            {...register('password')}
+            {...register("password")}
             error={!!errors.password}
             helperText={errors.password?.message}
           />
           <TextField
             fullWidth
             margin="normal"
-            type='file'
+            type="file"
             onChange={handleFileChange}
             error={!!errors.image}
             helperText={errors.image?.message}
@@ -120,7 +146,7 @@ const UserDialogEdit: React.FC<Props> = ({ open, onClose, onSubmit, user }) => {
             select
             fullWidth
             margin="normal"
-            {...register('role')}
+            {...register("role")}
             error={!!errors.role}
             helperText={errors.role?.message}
           >
@@ -132,7 +158,7 @@ const UserDialogEdit: React.FC<Props> = ({ open, onClose, onSubmit, user }) => {
             select
             fullWidth
             margin="normal"
-            {...register('status')}
+            {...register("status")}
             error={!!errors.status}
             helperText={errors.status?.message}
           >
@@ -143,7 +169,9 @@ const UserDialogEdit: React.FC<Props> = ({ open, onClose, onSubmit, user }) => {
       </DialogContent>
       <DialogActions>
         <Button onClick={onClose}>Hủy</Button>
-        <Button type="submit" form="user-form" variant="contained">Tạo</Button>
+        <Button type="submit" form="user-form" variant="contained">
+          Tạo
+        </Button>
       </DialogActions>
     </Dialog>
   );

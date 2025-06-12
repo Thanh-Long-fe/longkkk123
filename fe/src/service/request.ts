@@ -1,39 +1,45 @@
 // src/api/requestService.ts
 
-import axiosInstance from "./client"
+import axiosInstance from "./client";
 
 export const createRequest = (params: {
-  accountHolderName: string
-  bankName: string
-  accountNumber: string
-  orderCode: string
-  amount: number
-  userId: string
-  status?: 'pending' | 'approved' | 'rejected'
+  accountHolderName: string;
+  bankName: string;
+  accountNumber: string;
+  orderCode: string;
+  amount: number;
+  userId: string;
+  status?: "pending" | "approved" | "rejected";
 }) => {
-  return axiosInstance.post('/requests', params)
-}
-export const updateRequest = (params: {
-  accountHolderName: string
-  bankName: string
-  accountNumber: string
-  orderCode: string
-  amount: number
-}, id: string) => {
-  return axiosInstance.put(`/requests/${id}`, params)
-}
+  return axiosInstance.post("/requests", params);
+};
+export const updateRequest = (
+  params: {
+    accountHolderName: string;
+    bankName: string;
+    accountNumber: string;
+    orderCode: string;
+    amount: number;
+  },
+  id: string,
+) => {
+  return axiosInstance.put(`/requests/${id}`, params);
+};
 export const getAllRequests = () => {
-  return axiosInstance.get('/requests')
-}
+  return axiosInstance.get("/requests");
+};
 
 export const getRequestById = (id: string) => {
-  return axiosInstance.get(`/requests/${id}`)
-}
+  return axiosInstance.get(`/requests/${id}`);
+};
 
-export const updateRequestStatus = (id: string, status: 'pending' | 'approved' | 'rejected') => {
-  return axiosInstance.put(`/requests/${id}/status`, { status })
-}
+export const updateRequestStatus = (
+  id: string,
+  status: "pending" | "approved" | "rejected",
+) => {
+  return axiosInstance.put(`/requests/${id}/status`, { status });
+};
 
 export const deleteRequest = (id: string) => {
-  return axiosInstance.delete(`/requests/${id}`)
-}
+  return axiosInstance.delete(`/requests/${id}`);
+};

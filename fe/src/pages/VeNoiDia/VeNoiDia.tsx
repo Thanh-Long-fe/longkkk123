@@ -1,9 +1,18 @@
+import { Link } from "react-router-dom";
 import TableVe from "../../components/table/TableVe";
 import Tin from "../../components/tin/TIn";
 import "../../override.css";
 const VeNoiDia = () => {
   return (
     <div>
+      <div className="breadcrumb breadcrumbs">
+        <div className="rdfa-breadcrumb">
+          <div>
+            <Link to="/">Trang chủ</Link>
+            &nbsp;<span className="separator">»</span>&nbsp;Vé nội địa
+          </div>
+        </div>
+      </div>
       <div className="flex gap-5">
         <div className="basis-1/2">
           <>

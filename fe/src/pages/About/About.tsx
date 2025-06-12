@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "../../override.css";
 
 const About = () => {
@@ -6,13 +7,7 @@ const About = () => {
       <div className="breadcrumb breadcrumbs">
         <div className="rdfa-breadcrumb">
           <div>
-            <a
-              className="home"
-              href="https://phongvemaybay360.com/"
-              rel="v:url"
-            >
-              Trang chủ
-            </a>
+            <Link to="/home">Trang chủ</Link>
             &nbsp;<span className="separator">»</span>&nbsp;Giới thiệu
           </div>
         </div>

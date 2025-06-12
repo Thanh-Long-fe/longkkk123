@@ -1,4 +1,8 @@
-import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { CreateRequestDto } from './dto/create-request.dto';
 import { RequestRepository } from './repositories/request.repository';
 import { Request as RequestEntity } from './entities/request.schema';
@@ -12,14 +16,17 @@ export class RequestService {
     if (existing) {
       throw new BadRequestException('User already has a request');
     }
-    return this.repo.create({...dto, userId: id });
+    return this.repo.create({ ...dto, userId: id });
   }
 
   async getAllRequests() {
     return this.repo.findAll();
   }
 
-  async updateRequest(id: string, data: Partial<CreateRequestDto>): Promise<RequestEntity | null> {
+  async updateRequest(
+    id: string,
+    data: Partial<CreateRequestDto>,
+  ): Promise<RequestEntity | null> {
     return this.repo.updateRequest(id, data);
   }
 

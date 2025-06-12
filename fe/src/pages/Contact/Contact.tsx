@@ -1,9 +1,17 @@
-import NewsCard from "../../components/cardnew/Card";
+import { Link } from "react-router-dom";
 import "../../override.css";
 
 const Contact = () => {
   return (
     <>
+      <div className="breadcrumb breadcrumbs">
+        <div className="rdfa-breadcrumb">
+          <div>
+            <Link to="/">Trang chủ</Link>
+            &nbsp;<span className="separator">»</span>&nbsp;Liên hệ
+          </div>
+        </div>
+      </div>
       <h2 className="page-header">Liên hệ</h2>
       <div className="entry-content">
         <h2>Địa chỉ văn phòng tại Hà Nội</h2>

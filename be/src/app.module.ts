@@ -22,7 +22,7 @@ import { ConfigModule } from '@nestjs/config';
     RequestModule,
     UserModule,
     RedisModule,
-    CloudinaryModule
+    CloudinaryModule,
   ],
 })
 export class AppModule {}

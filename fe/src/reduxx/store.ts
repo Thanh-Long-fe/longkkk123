@@ -1,10 +1,19 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
-import storage from 'redux-persist/lib/storage'; // or storage from 'redux-persist' if using localStorage
-import authReducer from './authSlice';
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from "redux-persist";
+import storage from "redux-persist/lib/storage"; // or storage from 'redux-persist' if using localStorage
+import authReducer from "./authSlice";
 
 const persistConfig = {
-  key: 'root',
+  key: "root",
   storage,
 };
 const rootReducer = combineReducers({
@@ -23,3 +32,6 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
+
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;

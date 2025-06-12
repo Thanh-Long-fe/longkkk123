@@ -37,7 +37,7 @@ export class RequestController {
     return this.service.getRequestById(id);
   }
 
-  @Roles(Role.ADMIN)
+  @Roles(Role.ADMIN,Role.USER)
   @Put(':id')
   async update(
     @Param('id') id: string,

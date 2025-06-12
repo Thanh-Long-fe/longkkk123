@@ -16,7 +16,7 @@ import { key } from 'src/until/const';
       signOptions: { expiresIn: '15m' }, // accessToken expires in 15 minutes
     }),
     MongooseModule.forFeature([{ name: 'User', schema: UserSchema }]),
-    PassportModule
+    PassportModule,
   ],
   providers: [UserRepository, UserService, LocalStrategy],
   controllers: [UserController],

@@ -1,9 +1,17 @@
-import React from "react";
 import NewsCard from "../../components/cardnew/Card";
+import { Link } from "react-router-dom";
 
 const TinCongTy = () => {
   return (
     <div>
+      <div className="breadcrumb breadcrumbs">
+        <div className="rdfa-breadcrumb">
+          <div>
+            <Link to="/">Trang chủ</Link>
+            &nbsp;<span className="separator">»</span>&nbsp;Tin công ty
+          </div>
+        </div>
+      </div>
       <h2 className="font-bold" style={{ color: "#130A7F", marginTop: "10px" }}>
         Tin công ty
       </h2>

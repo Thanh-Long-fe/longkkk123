@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
 
 const Header: React.FC = () => {
   const [activeSubmenu, setActiveSubmenu] = useState<number | null>(null);
@@ -12,16 +13,23 @@ const Header: React.FC = () => {
       label: "Vé nội địa",
       path: "/ve-noi-dia",
       subMenu: [
-        { label: "Hồ Chí Minh", path: "/ve-noi-dia/hcm" },
-        { label: "Hà Nội", path: "/ve-noi-dia/hn" },
+        { label: "Hồ Chí Minh", path: "/ve-noi-dia/ve-di-ho-chi-minh" },
+        { label: "Hà Nội", path: "/ve-noi-dia/ve-di-ha-noi" },
+        { label: "Đà Nẵng", path: "/ve-noi-dia/ve-di-da-nang" },
+        { label: "Huế", path: "/ve-noi-dia/ve-di-hue" },
+        { label: "Đà Lạt", path: "/ve-noi-dia/ve-di-da-lat" },
+        { label: "Nha Trang", path: "/ve-noi-dia/ve-di-nha-trang" },
+        { label: "Quy Nhơn", path: "/ve-noi-dia/ve-di-quy-nhon" },
+        { label: "Phú Quốc", path: "/ve-noi-dia/ve-di-phu-quoc" },
+        { label: "Vinh", path: "/ve-noi-dia/ve-di-vinh" },
       ],
     },
     {
       label: "Vé quốc tế",
       path: "/ve-quoc-te",
       subMenu: [
-        { label: "Singapore", path: "/ve-quoc-te/singapore" },
-        { label: "Thái Lan", path: "/ve-quoc-te/thailand" },
+        { label: "Mĩ", path: "/ve-quoc-te/ve-di-mi" },
+        { label: "Úc", path: "/ve-quoc-te/ve-di-uc" },
       ],
     },
     {
@@ -30,13 +38,21 @@ const Header: React.FC = () => {
       subMenu: [
         { label: "Vietnam Airlines", path: "/ve-theo-hang/vna" },
         { label: "VietJet", path: "/ve-theo-hang/vietjet" },
+        { label: "Jetstar", path: "/ve-theo-hang/jetstar" },
       ],
     },
-    { label: "Hoàn tiền", path: "/hoan-tien" },
+    { label: "Hoàn tiền", path: "/admin/hoan-tien" },
     { label: "Tin khuyến mại", path: "/tin-khuyen-mai" },
     { label: "Du Lịch", path: "/du-lich" },
     { label: "Tin tức", path: "/tin-tuc" },
-    { label: "Tiện ích", path: "/tien-ich" },
+    {
+      label: "Tiện ích",
+      path: "#",
+      subMenu: [
+        { label: "Xem đơn hàng", path: "/xem-don-hang" },
+        { label: "Câu hỏi thường gặp", path: "/cau-hoi" },
+      ],
+    },
     { label: "Liên hệ", path: "/lien-he" },
     { label: "Tin công ty", path: "/tin-cong-ty" },
   ];
@@ -51,8 +67,8 @@ const Header: React.FC = () => {
         <div className="text-gray-700 text-xs sm:hidden">
           Bayre247 - Vé máy bay giá rẻ
         </div>
-        <button className="bg-purple-500 hover:bg-purple-600 text-white px-2 sm:px-4 py-1 rounded-full text-xs sm:text-sm flex items-center gap-1 sm:gap-2">
-          <span>👑</span>
+        <button className="bg-purple-500 hover:bg-purple-600 text-white px-2 sm:px-4 py-1 rounded-md text-xs sm:text-sm flex items-center gap-1 sm:gap-2">
+          <PersonAddIcon sx={{ color: "white" }} />
           <span className="hidden sm:inline">Tin tuyển dụng</span>
           <span className="sm:hidden">Tuyển dụng</span>
         </button>
@@ -85,14 +101,27 @@ const Header: React.FC = () => {
           className="lg:hidden bg-[#130A7F] text-white p-2 rounded"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M4 6h16M4 12h16M4 18h16"
+            />
           </svg>
         </button>
       </div>
 
       {/* Navigation menu - Desktop */}
-      <nav className="bg-[#130A7F] hidden lg:block" style={{ borderRadius: "5px" }}>
+      <nav
+        className="bg-[#130A7F] hidden lg:block"
+        style={{ borderRadius: "5px" }}
+      >
         <div className="flex items-center relative">
           {menuItems.map((item, index) => (
             <div
@@ -103,15 +132,23 @@ const Header: React.FC = () => {
             >
               <Link
                 to={item.path}
-                className={`block p-[5px] font-bold px-3 text-white hover:bg-white hover:text-[#130A7F] ${
+                className={`block p-[5px] font-bold px-3 xl:px-4 text-white hover:bg-white hover:text-[#130A7F] ${
                   index < menuItems.length - 1 ? "border-r border-blue-700" : ""
                 }`}
               >
                 <span className="text-xs flex items-center">
                   {item.label}
                   {item.subMenu && (
-                    <svg className="w-3 h-3 ml-1" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                    <svg
+                      className="w-3 h-3 ml-1"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                        clipRule="evenodd"
+                      />
                     </svg>
                   )}
                 </span>
@@ -153,19 +190,25 @@ const Header: React.FC = () => {
                   {item.subMenu && (
                     <button
                       className="p-3 text-white"
-                      onClick={() => setActiveSubmenu(activeSubmenu === index ? null : index)}
+                      onClick={() =>
+                        setActiveSubmenu(activeSubmenu === index ? null : index)
+                      }
                     >
-                      <svg 
-                        className={`w-4 h-4 transform transition-transform ${activeSubmenu === index ? 'rotate-180' : ''}`} 
-                        fill="currentColor" 
+                      <svg
+                        className={`w-4 h-4 transform transition-transform ${activeSubmenu === index ? "rotate-180" : ""}`}
+                        fill="currentColor"
                         viewBox="0 0 20 20"
                       >
-                        <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                        <path
+                          fillRule="evenodd"
+                          d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                          clipRule="evenodd"
+                        />
                       </svg>
                     </button>
                   )}
                 </div>
-                
+
                 {/* Mobile Submenu */}
                 {item.subMenu && activeSubmenu === index && (
                   <div className="bg-white bg-opacity-10">
