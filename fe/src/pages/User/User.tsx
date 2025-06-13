@@ -139,9 +139,9 @@ const UserManagement: React.FC = () => {
     return (
       <Chip
         label={config?.label || "user"}
-        color={config.color}
+        color={config?.color || "default"}
         size="small"
-        icon={config.icon}
+        icon={config?.icon || <PersonIcon fontSize="small" />}
         variant="outlined"
       />
     );

@@ -61,11 +61,15 @@ export interface IRequestFormInputs {
   accountNumber: string;
   orderCode: string;
   amount: number;
+  reason: string;
 }
 
 const schema = yup
   .object({
-    accountHolderName: yup.string().required("Tên chủ tài khoản là bắt buộc"),
+    accountHolderName: yup
+      .string()
+      .required("Tên chủ tài khoản là bắt buộc")
+      .max(100, "Tên chủ tài khoản không được quá 100 ký tự"),
     bankName: yup
       .string()
       .oneOf(vietnamBanks, "Vui lòng chọn ngân hàng hợp lệ")
@@ -73,12 +77,21 @@ const schema = yup
     accountNumber: yup
       .string()
       .matches(/^\d+$/, "Số tài khoản chỉ được chứa số")
-      .required("Số tài khoản là bắt buộc"),
-    orderCode: yup.string().required("Mã đơn là bắt buộc"),
+      .required("Số tài khoản là bắt buộc")
+      .max(20, "Số tài khoản không được quá 20 ký tự"),
+    orderCode: yup
+      .string()
+      .required("Mã đơn là bắt buộc")
+      .max(50, "Mã đơn không được quá 50 ký tự"),
     amount: yup
       .number()
       .positive("Số tiền phải lớn hơn 0")
-      .required("Số tiền là bắt buộc"),
+      .required("Số tiền là bắt buộc")
+      .max(1000000000000, "Số tiền không được quá 1 tỷ VNĐ"),
+    reason: yup
+      .string()
+      .required("Lý do là bắt buộc")
+      .max(500, "Lý do không được quá 500 ký tự"),
   })
   .required();
 
@@ -102,6 +115,7 @@ const RequestDialog: React.FC<Props> = ({ open, onClose, onSubmit }) => {
       accountNumber: "",
       orderCode: "",
       amount: 0,
+      reason: "",
     },
   });
 
@@ -120,6 +134,7 @@ const RequestDialog: React.FC<Props> = ({ open, onClose, onSubmit }) => {
             label="Tên chủ tài khoản"
             fullWidth
             margin="normal"
+            inputProps={{ maxLength: 100 }}
             {...register("accountHolderName")}
             error={!!errors.accountHolderName}
             helperText={errors.accountHolderName?.message}
@@ -147,6 +162,7 @@ const RequestDialog: React.FC<Props> = ({ open, onClose, onSubmit }) => {
             label="Số tài khoản"
             fullWidth
             margin="normal"
+            inputProps={{ maxLength: 20 }}
             {...register("accountNumber")}
             error={!!errors.accountNumber}
             helperText={errors.accountNumber?.message}
@@ -155,6 +171,7 @@ const RequestDialog: React.FC<Props> = ({ open, onClose, onSubmit }) => {
             label="Mã đơn"
             fullWidth
             margin="normal"
+            inputProps={{ maxLength: 50 }}
             {...register("orderCode")}
             error={!!errors.orderCode}
             helperText={errors.orderCode?.message}
@@ -164,9 +181,21 @@ const RequestDialog: React.FC<Props> = ({ open, onClose, onSubmit }) => {
             type="number"
             fullWidth
             margin="normal"
+            inputProps={{ max: 1000000000000 }}
             {...register("amount")}
             error={!!errors.amount}
             helperText={errors.amount?.message}
+          />
+          <TextField
+            label="Lý do"
+            fullWidth
+            margin="normal"
+            multiline
+            rows={3}
+            inputProps={{ maxLength: 500 }}
+            {...register("reason")}
+            error={!!errors.reason}
+            helperText={errors.reason?.message}
           />
         </form>
       </DialogContent>

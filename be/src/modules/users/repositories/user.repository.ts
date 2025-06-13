@@ -17,7 +17,12 @@ export class UserRepository {
     return this.UserModel.create(data);
   }
   async updateUser(id: string, data: Partial<User>): Promise<any> {
-    return this.UserModel.findByIdAndUpdate(id, { ...data }, { new: true });
+    const dataa = await this.UserModel.findByIdAndUpdate(
+      id,
+      { ...data },
+      { new: true },
+    );
+    return dataa;
   }
 
   async actionUser(id: string, status: 'active' | 'inactive'): Promise<any> {
@@ -32,6 +37,6 @@ export class UserRepository {
     return this.UserModel.find();
   }
   async getListUserId(id: string): Promise<any[]> {
-    return this.UserModel.find({_id: new Types.ObjectId(id as string)});
+    return this.UserModel.find({ _id: new Types.ObjectId(id as string) });
   }
 }

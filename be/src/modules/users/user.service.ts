@@ -97,7 +97,7 @@ export class UserService {
     await this.redis.del(`refresh:${payload.sub}`);
   }
   async updateUser(id: string, data: Partial<User>): Promise<any> {
-    this.userRepo.updateUser(id, data);
+    return this.userRepo.updateUser(id, data);
   }
   async actionUser(id: string, status: 'active' | 'inactive'): Promise<any> {
     return this.userRepo.actionUser(id, status);

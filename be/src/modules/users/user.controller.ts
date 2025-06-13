@@ -32,10 +32,9 @@ export class UserController {
   @Roles(Role.ADMIN, Role.USER)
   @Get('/list')
   async getListUser(@Req() req) {
-    if(req.user.role === "admin") {
+    if (req.user.role === 'admin') {
       return this.userService.getListUser();
-    }
-    else {
+    } else {
       return this.userService.getListUserId(req.user.userId);
     }
   }
@@ -64,7 +63,7 @@ export class UserController {
     @Param('id') id: string,
     @Body() data: UserDto,
   ): Promise<any> {
-    this.userService.updateUser(id, data);
+    return this.userService.updateUser(id, data);
   }
   @Patch('action/:id')
   async actionUser(@Param('id') id: string, @Body() body): Promise<any> {

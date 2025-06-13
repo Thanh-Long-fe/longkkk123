@@ -22,6 +22,9 @@ export class Request extends Document {
   @Prop({ type: Types.ObjectId, ref: 'User', required: true })
   userId: Types.ObjectId; // Tham chiếu đến User
 
+  @Prop({ required: true })
+  reason: string; // Lý do
+
   @Prop({ enum: ['pending', 'approved', 'rejected'], default: 'pending' })
   status: string; // Trạng thái
 }

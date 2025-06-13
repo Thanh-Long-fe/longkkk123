@@ -64,11 +64,15 @@ export interface IRequestFormInputs {
   accountNumber: string;
   orderCode: string;
   amount: number;
+  reason: string;
 }
 
 const schema = yup
   .object({
-    accountHolderName: yup.string().required("Tên chủ tài khoản là bắt buộc"),
+    accountHolderName: yup
+      .string()
+      .required("Tên chủ tài khoản là bắt buộc")
+      .max(100, "Tên chủ tài khoản không được quá 100 ký tự"),
     bankName: yup
       .string()
       .oneOf(vietnamBanks, "Vui lòng chọn ngân hàng hợp lệ")
@@ -76,12 +80,21 @@ const schema = yup
     accountNumber: yup
       .string()
       .matches(/^\d+$/, "Số tài khoản chỉ được chứa số")
-      .required("Số tài khoản là bắt buộc"),
-    orderCode: yup.string().required("Mã đơn là bắt buộc"),
+      .required("Số tài khoản là bắt buộc")
+      .max(20, "Số tài khoản không được quá 20 ký tự"),
+    orderCode: yup
+      .string()
+      .required("Mã đơn là bắt buộc")
+      .max(50, "Mã đơn không được quá 50 ký tự"),
     amount: yup
       .number()
       .positive("Số tiền phải lớn hơn 0")
-      .required("Số tiền là bắt buộc"),
+      .required("Số tiền là bắt buộc")
+      .max(1000000000000, "Số tiền không được quá 1 tỷ VNĐ"),
+    reason: yup
+      .string()
+      .required("Lý do là bắt buộc")
+      .max(500, "Lý do không được quá 500 ký tự"),
   })
   .required();
 
@@ -111,6 +124,7 @@ const RequestDialogEdit: React.FC<Props> = ({
       accountNumber: "",
       orderCode: "",
       amount: 0,
+      reason: "",
     },
   });
 
@@ -127,6 +141,7 @@ const RequestDialogEdit: React.FC<Props> = ({
       accountNumber: request.accountNumber,
       orderCode: request.orderCode,
       amount: request.amount,
+      reason: request.reason,
     });
   }, [request]);
 
@@ -139,15 +154,12 @@ const RequestDialogEdit: React.FC<Props> = ({
             label="Tên chủ tài khoản"
             fullWidth
             margin="normal"
+            inputProps={{ maxLength: 100 }}
             {...register("accountHolderName")}
             error={!!errors.accountHolderName}
             helperText={errors.accountHolderName?.message}
           />
-          <FormControl
-            fullWidth
-            margin="normal"
-            error={!!errors.bankName}
-          >
+          <FormControl fullWidth margin="normal" error={!!errors.bankName}>
             <InputLabel id="bankName-label">Tên ngân hàng</InputLabel>
             <Select
               labelId="bankName-label"
@@ -161,7 +173,13 @@ const RequestDialogEdit: React.FC<Props> = ({
                 </MenuItem>
               ))}
             </Select>
-            <p style={{ color: "#d32f2f", fontSize: "0.75rem", marginTop: "4px" }}>
+            <p
+              style={{
+                color: "#d32f2f",
+                fontSize: "0.75rem",
+                marginTop: "4px",
+              }}
+            >
               {errors.bankName?.message}
             </p>
           </FormControl>
@@ -169,6 +187,7 @@ const RequestDialogEdit: React.FC<Props> = ({
             label="Số tài khoản"
             fullWidth
             margin="normal"
+            inputProps={{ maxLength: 20 }}
             {...register("accountNumber")}
             error={!!errors.accountNumber}
             helperText={errors.accountNumber?.message}
@@ -177,6 +196,7 @@ const RequestDialogEdit: React.FC<Props> = ({
             label="Mã đơn"
             fullWidth
             margin="normal"
+            inputProps={{ maxLength: 50 }}
             {...register("orderCode")}
             error={!!errors.orderCode}
             helperText={errors.orderCode?.message}
@@ -186,9 +206,21 @@ const RequestDialogEdit: React.FC<Props> = ({
             type="number"
             fullWidth
             margin="normal"
+            inputProps={{ max: 1000000000000 }}
             {...register("amount")}
             error={!!errors.amount}
             helperText={errors.amount?.message}
+          />
+          <TextField
+            label="Lý do"
+            fullWidth
+            margin="normal"
+            multiline
+            rows={3}
+            inputProps={{ maxLength: 500 }}
+            {...register("reason")}
+            error={!!errors.reason}
+            helperText={errors.reason?.message}
           />
         </form>
       </DialogContent>

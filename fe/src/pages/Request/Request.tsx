@@ -56,6 +56,7 @@ export interface IRequest {
     userName: string;
     _id: string;
   };
+  reason: string;
   status: "pending" | "approved" | "rejected";
   createdAt?: Date;
   updatedAt?: Date;
@@ -75,6 +76,7 @@ const RequestManagement: React.FC = () => {
     accountNumber: "",
     orderCode: "",
     amount: 0,
+    reason: "",
   });
   const [id, setId] = useState<string>("");
   // State for search and filter
@@ -229,6 +231,7 @@ const RequestManagement: React.FC = () => {
                 accountNumber: response.data.accountNumber,
                 orderCode: response.data.orderCode,
                 amount: response.data.amount,
+                reason: response.data.reason || "",
               }
             : v,
         ),
@@ -408,6 +411,9 @@ const RequestManagement: React.FC = () => {
                   Số tiền
                 </TableCell>
                 <TableCell sx={{ fontWeight: "bold", color: "#1a1a2e" }}>
+                  Lý do
+                </TableCell>
+                <TableCell sx={{ fontWeight: "bold", color: "#1a1a2e" }}>
                   Người yêu cầu
                 </TableCell>
                 <TableCell sx={{ fontWeight: "bold", color: "#1a1a2e" }}>
@@ -468,6 +474,21 @@ const RequestManagement: React.FC = () => {
                       </Typography>
                     </TableCell>
                     <TableCell>
+                      <Tooltip title={request?.reason || ""}>
+                        <Typography
+                          variant="body2"
+                          sx={{
+                            maxWidth: "200px",
+                            overflow: "hidden",
+                            textOverflow: "ellipsis",
+                            whiteSpace: "nowrap",
+                          }}
+                        >
+                          {request?.reason || ""}
+                        </Typography>
+                      </Tooltip>
+                    </TableCell>
+                    <TableCell>
                       <Box>
                         <Typography variant="body2" fontWeight="medium">
                           {request.userId?.name}
@@ -495,26 +516,26 @@ const RequestManagement: React.FC = () => {
                           justifyContent: "center",
                         }}
                       >
-                        {
-                          (request.status === "pending" || auth.role === "admin") && (
-                            <Tooltip title="Chỉnh sửa">
-                              <IconButton
-                                size="small"
-                                onClick={() =>
-                                  handleEditRequest(request, request._id)
-                                }
-                                sx={{
-                                  color: "#2196F3",
-                                  "&:hover": {
-                                    backgroundColor: "rgba(33, 150, 243, 0.1)",
-                                    transform: "scale(1.1)",
-                                  },
-                                }}
-                              >
-                                <EditIcon fontSize="small" />
-                              </IconButton>
-                            </Tooltip>
-                          )}
+                        {(request.status === "pending" ||
+                          auth.role === "admin") && (
+                          <Tooltip title="Chỉnh sửa">
+                            <IconButton
+                              size="small"
+                              onClick={() =>
+                                handleEditRequest(request, request._id)
+                              }
+                              sx={{
+                                color: "#2196F3",
+                                "&:hover": {
+                                  backgroundColor: "rgba(33, 150, 243, 0.1)",
+                                  transform: "scale(1.1)",
+                                },
+                              }}
+                            >
+                              <EditIcon fontSize="small" />
+                            </IconButton>
+                          </Tooltip>
+                        )}
                         {auth.role === "admin" && (
                           <StatusSelect
                             value={request.status}

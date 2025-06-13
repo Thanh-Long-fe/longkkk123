@@ -30,6 +30,10 @@ export class CreateRequestDto {
   @IsMongoId()
   userId: string;
 
+  @IsString()
+  @IsNotEmpty()
+  reason: string;
+
   @IsOptional()
   @IsEnum(['pending', 'approved', 'rejected'])
   status?: string;

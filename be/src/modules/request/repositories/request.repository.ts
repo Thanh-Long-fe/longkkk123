@@ -13,7 +13,12 @@ export class RequestRepository {
   ) {}
 
   async create(data: CreateRequestDto): Promise<Request> {
-    return (await this.model.create({...data, userId: new Types.ObjectId(data.userId as string)})).populate('userId');
+    return (
+      await this.model.create({
+        ...data,
+        userId: new Types.ObjectId(data.userId as string),
+      })
+    ).populate('userId');
   }
 
   async findAll(): Promise<Request[]> {
@@ -34,7 +39,10 @@ export class RequestRepository {
   }
 
   async findByUserId(userId: string): Promise<Request | null> {
-    return this.model.findOne({ userId: new Types.ObjectId(userId as string) }).populate("userId").exec();
+    return this.model
+      .findOne({ userId: new Types.ObjectId(userId as string) })
+      .populate('userId')
+      .exec();
   }
 
   async updateStatus(id: string, status: string): Promise<Request | null> {
