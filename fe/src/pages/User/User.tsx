@@ -453,7 +453,6 @@ const UserManagement: React.FC = () => {
                     sx={{
                       "&:hover": {
                         backgroundColor: "#f5f5f5",
-                        transform: "scale(1.001)",
                         transition: "all 0.2s ease-in-out",
                       },
                       backgroundColor: index % 2 === 0 ? "#fafafa" : "white",
