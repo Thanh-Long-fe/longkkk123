@@ -4,7 +4,7 @@ import { clearUser, setUser } from "../reduxx/authSlice";
 import { refreshToken } from "./auth";
 
 const axiosInstance = axios.create({
-  baseURL:  import.meta.env.VITE_API_URL,
+  baseURL:  `${import.meta.env.VITE_API_BASE_URL || "https://api.vemaybayvietmytravel.online"}`,
   timeout: 10000,
   headers: {
     "Content-Type": "application/json",
