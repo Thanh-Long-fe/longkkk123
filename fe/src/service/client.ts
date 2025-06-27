@@ -4,7 +4,7 @@ import { clearUser, setUser } from "../reduxx/authSlice";
 import { refreshToken } from "./auth";
 
 const axiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
+  baseURL: "http://139.59.251.6:3000/",
   timeout: 10000,
   headers: {
     "Content-Type": "application/json",
